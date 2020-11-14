@@ -13,5 +13,6 @@
 	<div class="price_line">
 		<span class="price"><%= product.price %></span>
 	</div>
+	<%= button_to("Add to Cart", lineitems_path(product_id: product), class: "add_to_cart") %>
 </div>
 <% end %>
