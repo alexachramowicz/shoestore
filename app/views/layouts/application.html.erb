@@ -9,9 +9,23 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="products">
-    
-    <%= yield %>
+  <body class=<%= controller.controller_name%>>
+    <div id="banner">
+      <%= image_tag("shoestore_logo.svg") %><b>S</b>hoe<b>S</b>tore
+      <% @page_title || "Our Products" %>
+    </div>
+
+    <div id="columns">
+
+      <div id="side">
+
+      </div>
+
+      <div id="main">
+        <%= yield %>
+      </div>
+
+    </div>
 
   </body>
 </html>
