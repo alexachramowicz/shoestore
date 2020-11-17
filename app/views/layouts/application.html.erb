@@ -11,14 +11,18 @@
 
   <body class=<%= controller.controller_name%>>
     <div id="banner">
-      <%= image_tag("shoestore_logo.svg") %><b>S</b>hoe<b>S</b>tore
+      <%= image_tag("shoestore_logo.svg") %>
+      <b>S</b>hoe<b>S</b>tore
       <% @page_title || "Our Products" %>
     </div>
 
     <div id="columns">
 
       <div id="side">
-
+        <div id="cart">
+          <!-- render current object cart's row in table -->
+          <%= render @cart %> 
+        </div>
       </div>
 
       <div id="main">

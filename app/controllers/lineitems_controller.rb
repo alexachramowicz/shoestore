@@ -2,7 +2,7 @@ class LineitemsController < ApplicationController
   before_action :set_lineitem, only: [:show, :edit, :update, :destroy]
 
   include CurrentCart # mixin
-  before_action :set_cart, 
+  before_action :set_cart 
 
   # GET /lineitems
   # GET /lineitems.json
@@ -35,7 +35,8 @@ class LineitemsController < ApplicationController
 
     respond_to do |format|
       if @lineitem.save
-        format.html { redirect_to @lineitem.cart, notice: 'Lineitem was successfully created.' }
+        format.html { redirect_to shopper_url, notice: 'Lineitem was successfully added to cart.' }
+        format.js
         format.json { render :show, status: :created, location: @lineitem }
       else
         format.html { render :new }

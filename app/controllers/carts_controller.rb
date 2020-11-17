@@ -1,5 +1,8 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  #before_action :set_cart, only: [:show, :edit, :update, :destroy]
+
+  include CurrentCart # mixin
+  before_action :set_cart 
 
   # GET /carts
   # GET /carts.json
@@ -55,17 +58,19 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     @cart.destroy
+    session[:cart_id] = nil
+
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to shopper_url, notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
+    # def set_cart
+    #   @cart = Cart.find(params[:id])
+    # end
 
     # Only allow a list of trusted parameters through.
     def cart_params
