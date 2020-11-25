@@ -19,3 +19,4 @@
 </table>
 
 <%= button_to "Empty Cart", @cart, method: :delete, data: {confirm: "are you sure?"} %>
+<%= button_to "Check Out", new_order_path, method: :get %>

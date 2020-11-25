@@ -1,6 +1,8 @@
 class CartsController < ApplicationController
   #before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :authorize
+
   include CurrentCart # mixin
   before_action :set_cart 
 
@@ -58,10 +60,10 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     @cart.destroy
-    session[:cart_id] = nil
+    session[:cart_id] = nil # delete cart session, next item added to new session
 
     respond_to do |format|
-      format.html { redirect_to shopper_url, notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to shopper_url, notice: 'Cart was successfully deleted.' }
       format.json { head :no_content }
     end
   end

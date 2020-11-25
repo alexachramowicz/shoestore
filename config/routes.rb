@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :lineitems
-  resources :carts
+	get 'login', to: 'access#new'
+	post 'login', to: 'access#create'
+	delete 'logout', to: 'access#destroy'
+	#get 'access/destroy'
+	get 'admin', to: 'admin#index'
+	resources :users
+	resources :orders
+	resources :lineitems
+	resources :carts
 	root "shopper#index", as: "shopper" #shopper_path for root
 	get 'shopper/index'
 	resources :products
