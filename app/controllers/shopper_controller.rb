@@ -7,4 +7,13 @@ class ShopperController < ApplicationController
 	def index
 		@products = Product.order(:name)
 	end
+
+	def search
+		if params[:search].empty?
+			redirect_to(shopper_path, notice: "search field empty!")
+			return
+		else
+			@search_results = Product.all.where('name LIKE ?', "%#{params[:search]}%")
+		end
+	end
 end
