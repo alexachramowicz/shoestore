@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+	skip_before_action :authorize
 
 	include CurrentCart # mixin
 	before_action :set_cart 
