@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  skip_before_action :authorize
+  #skip_before_action :authorize
 
   include CurrentCart # mixin
   before_action :set_cart 

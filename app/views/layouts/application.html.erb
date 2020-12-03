@@ -19,27 +19,26 @@
     <div id="columns">
 
       <div id="side">
+        <%= form_tag(shopper_search_path, method: "get") do %>
+          <%= search_field_tag :search, params[:search] %>
+          <%= button_to 'Search', shopper_search_path, method: "get" %>
+        <% end %>
 
         <div id="cart">
-
-          <%= form_tag(shopper_search_path, method: "get") do %>
-            <%= search_field_tag :search, params[:search] %>
-            <%= button_to 'Search', shopper_search_path, method: "get" %>
-          <% end %>
-
-          <!-- render current object cart's row in table -->
           <%= render @cart %> 
-
-          <% if session[:user_id] %>
-            <ul>
-              <li><%= link_to 'Orders',   orders_path   %></li>
-              <li><%= link_to 'Products', products_path %></li>
-              <li><%= link_to 'Users',    users_path    %></li>
-            </ul>
-            <%= button_to 'Logout', logout_path, method: :delete   %>
-          <% end %>
-
         </div>
+
+        <% if session[:user_id] %>
+          <ul>
+            <li><%= link_to 'Orders',   orders_path   %></li>
+            <li><%= link_to 'Products', products_path %></li>
+            <li><%= link_to 'Users',    users_path    %></li>
+          </ul>
+          <%= button_to 'Logout', logout_path, method: :delete %>
+        <% else %>
+          <br><%= button_to 'Admin Login', login_path, method: :get %>
+        <% end %>
+
       </div>
 
       <div id="main">
